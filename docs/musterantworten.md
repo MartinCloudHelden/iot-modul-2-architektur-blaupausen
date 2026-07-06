@@ -46,7 +46,7 @@ Eine eingehende Freigabe auf das Gateway würde einen offenen, erreichbaren Port
 
 **3. Das Gateway fällt Freitagabend aus, es merkt niemand bis Montag. Welche Maßnahme aus der Vorlesung fehlt in diesem Bild?**
 
-Monitoring der Datenkette selbst mit Alarmierung – ein Heartbeat/Verfügbarkeitssignal, das Alarm auslöst, wenn Daten ausbleiben. Technisch (wie in der MQTT-Übung): das `verbindung`-Topic mit Last Will, über das der Broker „offline" meldet, plus ein Monitoring-System, das darauf alarmiert. Ohne aktive Überwachung ist der Ausfall unsichtbar (Blindflug). Ergänzend: Pufferung (Store-and-Forward) rettet keine Daten, wenn das Gateway selbst tot ist – dafür braucht es Redundanz oder schnellen Ersatz. RLP-Bezug: 1.4.3 (Benachrichtigungs- und Alarmierungsstrategie).
+Monitoring der Datenkette selbst mit Alarmierung – ein Heartbeat/Verfügbarkeitssignal, das Alarm auslöst, wenn Daten ausbleiben. Technisch (wie in der MQTT-Übung): das `verbindung`-Topic mit Last Will, über das der Broker „offline" meldet, plus ein Monitoring-System, das darauf alarmiert. Ohne aktive Überwachung ist der Ausfall unsichtbar (Blindflug). Ergänzend: Pufferung (Store-and-Forward) rettet keine Daten, wenn das Gateway selbst tot ist – dafür braucht es Redundanz oder schnellen Ersatz.
 
 ---
 
@@ -80,7 +80,7 @@ Der Jump-Host ist der gefährlichere von beiden, weil er (anders als der lesende
 - **(b) Daten:** hängt vom Gateway ab. Mit Store-and-Forward-Puffer werden die Daten lokal zwischengespeichert und nach Rückkehr der Leitung nachgeliefert → kein Verlust, nur Verzögerung. Ohne Puffer sind die 4 Stunden verloren.
 - **(c) Dashboards:** nicht verfügbar bzw. veraltet. Sie liegen in der Cloud und werden über dieselbe Leitung abgerufen; vor Ort sieht niemand aktuelle Werte. Lokale Anzeige gäbe es nur mit einer Zusatzkomponente am Standort.
 
-Entscheidende Komponente für (b): das Edge-Gateway mit Pufferung (Store-and-Forward). RLP-Bezug: 1.4.5 (Verfügbarkeit der Datenübertragung).
+Entscheidende Komponente für (b): das Edge-Gateway mit Pufferung (Store-and-Forward).
 
 **2. Vergleicht die monatlichen Kosten gedanklich: 100 Messwerte/s roh in die Cloud vs. Statusereignisse. Welches Prinzip aus Modul 2 spart hier bares Geld?**
 

@@ -2,8 +2,6 @@
 
 Vier Architekturmuster für die Kopplung von OT und IT – von der gefährlichen Direktanbindung bis zur Cloud-Plattform. Jedes Muster enthält ein Architekturbild (SVG + PNG), ein bereinigtes Mermaid-Diagramm, eine Beschreibung sowie Stärken, Schwächen und passende Einsatzgebiete.
 
-**RLP-Bezug:** 1.3.2 (Kopplung IT ↔ IoT), 1.4.5 (Netzwerkdesign für Maschinenkommunikation, Netzwerksicherheit, Schutz der Integrität, Verfügbarkeit der Datenübertragung)
-
 ## Die vier Muster
 
 | # | Muster | Kernidee | Aufwand | Typischer Einsatz |
