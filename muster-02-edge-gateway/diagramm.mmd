@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph OT["OT · Produktionshalle"]
+        M["Alte Maschine"]
+        S["Stromsensor<br/>(Klemme, nicht-invasiv)"]
+        GW["Edge-Gateway<br/>Raspberry Pi / IPC"]
+        M --- S
+        S -->|"analog / GPIO"| GW
+    end
+    FW["Firewall"]
+    subgraph IT["IT · Büronetz / Serverraum"]
+        BR["MQTT-Broker"]
+        DB["Zeitreihen-DB"]
+        DASH["Dashboard"]
+        MES["MES / ERP"]
+        BR --> DASH
+        BR --> DB
+        DB --> MES
+    end
+    GW -->|"MQTT über TLS :8883<br/>nur ausgehend"| FW --> BR
+    style OT fill:#FFF6EA,stroke:#E8890C
+    style IT fill:#EAF2FD,stroke:#2563EB
+    style FW fill:#B91C1C,color:#fff

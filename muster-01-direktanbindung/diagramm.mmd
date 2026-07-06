@@ -1,0 +1,14 @@
+flowchart LR
+    subgraph NETZ["Ein gemeinsames Netz (flach, unsegmentiert)"]
+        M["Alte Maschine<br/>SPS, Modbus TCP,<br/>keine Authentifizierung"]
+        SW["Switch"]
+        PC["Büro-PCs"]
+        SRV["Server (AD, ERP)"]
+        RT["Internet-Router"]
+    end
+    M <-->|"Modbus TCP :502<br/>unverschlüsselt"| SW
+    SW <--> PC
+    SW <--> SRV
+    SW <--> RT
+    style M stroke:#DC2626,stroke-width:3px
+    style NETZ fill:#FDECEC,stroke:#DC2626

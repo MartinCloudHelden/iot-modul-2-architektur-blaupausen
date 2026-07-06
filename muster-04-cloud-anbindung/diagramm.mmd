@@ -1,0 +1,22 @@
+flowchart LR
+    subgraph OT["OT · Standort / Filiale"]
+        MA["Maschine A + Sensor"]
+        MB["Maschine B + Sensor"]
+        GW["Edge-Gateway<br/>puffert bei Leitungsausfall"]
+        MA --> GW
+        MB --> GW
+    end
+    FW["Perimeter-Firewall"]
+    subgraph CLOUD["Cloud · z. B. AWS"]
+        IOT["IoT Core / Managed Broker"]
+        RULE["Regeln / Alarme"]
+        ST["Storage (S3 / Timestream)"]
+        DASH["Dashboards, weltweit"]
+        IOT --> RULE
+        IOT --> ST
+        ST --> DASH
+    end
+    GW -->|"MQTT/TLS :8883<br/>X.509-Zertifikat, nur ausgehend"| FW --> IOT
+    style OT fill:#FFF6EA,stroke:#E8890C
+    style CLOUD fill:#F5EEFC,stroke:#7C3AED
+    style FW fill:#B91C1C,color:#fff

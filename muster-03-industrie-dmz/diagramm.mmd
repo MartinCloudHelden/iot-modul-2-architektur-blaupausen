@@ -1,0 +1,27 @@
+flowchart LR
+    subgraph OT["OT-Zone"]
+        M1["Maschine 1"]
+        M2["Maschine 2"]
+        GW["Edge-Gateway"]
+        M1 --> GW
+        M2 --> GW
+    end
+    FW1["FW 1"]
+    subgraph DMZ["Industrie-DMZ"]
+        BR["MQTT-Broker<br/>zentraler Übergabepunkt"]
+        JH["Jump-Host<br/>(Wartung, MFA)"]
+    end
+    FW2["FW 2"]
+    subgraph IT["IT-Zone"]
+        DASH["Dashboard / Monitoring"]
+        DB["Datenbank / Analytics"]
+        MES["MES / ERP"]
+    end
+    GW -->|"publish, TLS :8883<br/>nur ausgehend"| FW1 --> BR
+    DASH -->|"subscribe"| FW2 --> BR
+    DB --- FW2
+    style OT fill:#FFF6EA,stroke:#E8890C
+    style DMZ fill:#F2F2F2,stroke:#6B7280
+    style IT fill:#EAF2FD,stroke:#2563EB
+    style FW1 fill:#B91C1C,color:#fff
+    style FW2 fill:#B91C1C,color:#fff
